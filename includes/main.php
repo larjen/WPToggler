@@ -7,7 +7,7 @@ class WPToggler {
   static $plugin_name = "WPToggler"; // shown in menu and control panel.
 
   // values to use internally in the plugin, do not customize
-  static $debug = true;
+  static $debug = false;
 
   static function activation() {
 
