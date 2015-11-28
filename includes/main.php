@@ -14,6 +14,7 @@ class WPToggler {
     // set all settings
     $optionsArr = array(
       self::$plugin_name . "_VALUE" => false,
+      self::$plugin_name . "_title" => "WPToggler",
       self::$plugin_name . "_description" => "Switches the value of WPToggler_VALUE between false and true.",
       self::$plugin_name . "_switched_to_true" => "WPToggler_VALUE is now true.",
       self::$plugin_name . "_switched_to_false" => "WPToggler_VALUE is now false.",

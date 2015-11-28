@@ -29,6 +29,10 @@ This option is only meant for theme developers. If you put this somewhere in you
 
 ## Changelog
 
+
+### 1.0.2
+* Added option to rename dashboard widget.
+
 ### 1.0.1
 * Added dashboard widget, so control is at the dashboard.
 * Added fully customizable textual control to the plugin settings page.

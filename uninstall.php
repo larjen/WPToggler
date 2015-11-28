@@ -12,6 +12,7 @@ class WPTogglerUninstall extends WPToggler {
 
         // delete all settings
         $optionsArr = array(
+          self::$plugin_name . "_title",
           self::$plugin_name . "_MESSAGES",
           self::$plugin_name . "_VALUE",
           self::$plugin_name . "_description",

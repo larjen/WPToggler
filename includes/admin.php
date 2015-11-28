@@ -3,7 +3,7 @@
 class WPTogglerAdmin extends WPToggler {
 
   static function register_my_dashboard_widget(){
-    wp_add_dashboard_widget('my_dashboard_widget','WPToggler','WPTogglerAdmin::my_dashboard_widget_display');
+    wp_add_dashboard_widget('my_dashboard_widget',get_option(self::$plugin_name . "_title"),'WPTogglerAdmin::my_dashboard_widget_display');
   }
 
   static function my_dashboard_widget_display() {
@@ -74,7 +74,15 @@ class WPTogglerAdmin extends WPToggler {
     }
 
     // save all settings
-    $optionsArr = array(self::$plugin_name . "_description", self::$plugin_name . "_switched_to_true", self::$plugin_name . "_switched_to_false", self::$plugin_name . "_option_label", self::$plugin_name . "_option_label_true", self::$plugin_name . "_option_label_false");
+    $optionsArr = array(
+        self::$plugin_name . "_title", 
+        self::$plugin_name . "_description", 
+        self::$plugin_name . "_switched_to_true", 
+        self::$plugin_name . "_switched_to_false", 
+        self::$plugin_name . "_option_label", 
+        self::$plugin_name . "_option_label_true", 
+        self::$plugin_name . "_option_label_false"
+    );
     foreach ($optionsArr as $value) {
       if (isset($_POST[$value])) {
         update_option($value, $_POST[$value]);
@@ -111,6 +119,7 @@ class WPTogglerAdmin extends WPToggler {
     echo '<h3 class="title">WPToggler settings</h3>';
     echo '<p>From here you may customize the messages and options displayed in the dashboard widget.';
     echo '<table class="form-table"><tbody>';
+    echo '<tr valign="top"><th scope="row"><label for="' . self::$plugin_name . '_title">Title for dashboard widget</label></th><td><input id="' . self::$plugin_name . '_title" name="' . self::$plugin_name . '_title" type="text" value="' . get_option(self::$plugin_name . "_title") . '" class="regular-text"></td></tr>';
     echo '<tr valign="top"><th scope="row"><label for="' . self::$plugin_name . '_description">Description for the toggle switch</label></th><td><input id="' . self::$plugin_name . '_description" name="' . self::$plugin_name . '_description" type="text" value="' . get_option(self::$plugin_name . "_description") . '" class="regular-text"></td></tr>';
     echo '<tr valign="top"><th scope="row"><label for="' . self::$plugin_name . '_switched_to_true">Message to display when switched to true</label></th><td><input id="' . self::$plugin_name . '_switched_to_true" name="' . self::$plugin_name . '_switched_to_true" type="text" value="' . get_option(self::$plugin_name . "_switched_to_true") . '" class="regular-text"></td></tr>';
     echo '<tr valign="top"><th scope="row"><label for="' . self::$plugin_name . '_switched_to_false">Message to display when switched to false</label></th><td><input id="' . self::$plugin_name . '_switched_to_false" name="' . self::$plugin_name . '_switched_to_false" type="text" value="' . get_option(self::$plugin_name . "_switched_to_false") . '" class="regular-text"></td></tr>';
